@@ -13,6 +13,7 @@ $villemanag= new VilleManager($db);
 </form>
 
 <?php if (!empty($_POST['nom'])){
+          $nom=$_POST["nom"];
           $req="insert into ville (vil_nom) values('$nom')";
           $result=$db->prepare($req)->execute();
 
