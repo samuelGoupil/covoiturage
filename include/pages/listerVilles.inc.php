@@ -1,26 +1,29 @@
-
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="../../css/stylesheet.css">
+</head>
 <h1>Liste des villes</h1>
 
 <?php
 $db= new Mypdo();
 $villemanag= new VilleManager($db);
 ?>
-
-<?php
-$listeVille=$villemanag->getList();
-foreach($listeVille as $ville){
-?>
+<table border="1">
   <tr>
-    <td> <?php echo $ville ->getVil_num();?></td>
-    <td> <?php echo $ville ->getVil_nom();?></td>
+    <td>Numero</td>
+    <td>Ville</td>
   </tr>
-<?php
-}
-?>
+  <?php
+  $listeVille=$villemanag->getList();
+  foreach($listeVille as $ville){
+  ?>
 
+      <tr>
+        <td> <?php echo $ville ->getVil_num();?></td>
+        <td> <?php echo $ville ->getVil_nom();?></td>
+      </tr>
 
-
-
- ?>
-
-//A COMPLETER
+  <?php
+  }
+  ?>
+</table>
