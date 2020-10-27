@@ -1,6 +1,6 @@
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="../../css/stylesheet.css">
+  <link rel="stylesheet" type="text/css" href="../css/stylesheet.css" />
 </head>
 <h1>Liste des villes</h1>
 
@@ -8,7 +8,7 @@
 $db= new Mypdo();
 $villemanag= new VilleManager($db);
 ?>
-<table border="1">
+<table>
   <tr>
     <td>Numero</td>
     <td>Ville</td>
