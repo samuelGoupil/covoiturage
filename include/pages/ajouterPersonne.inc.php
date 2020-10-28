@@ -17,12 +17,43 @@
 		<input type="checkbox" name="Etudiant" value="Etudiant">
 		<input type="checkbox" name="Personnel" value="Personnel">
 		<input type="submit" name="Valider" value="Valider">
-
-		</select>
 	</form>
 
 	<?php
 
+	if (empty($_POST['Etudiant'])&&empty($_POST['Personnel'])){
+		echo 'veuillez choisir une catégorie';
+	}
+	if (!empty($_POST['Etudiant'])&&!empty($_POST['Personnel'])){
+		echo 'veuillez choisir une seule catégorie';
+	}
+	if (!empty($_POST['Etudiant'])&&empty($_POST['Personnel'])){
+		?>
+		<h2>Ajouter un étudiant</h2>
+		<form  method="post">
+			<label for="annee">Année :</label>
+			<select  name="annee" value="Année 1">
+				<option value="Année 1">Année 1</option>
+				<option value="Année 2">Année 2</option>
+				<option value="Année spéciale">Année spéciale</option>
+				<option value="Licence Professionnelle"></option>
+			</select>
+			<label for="departement">Département :</label>
+			<select  name="departement" value="">
+				<option value="Génie civil">Génie civil</option>
+				<option value="Informatique">Informatique</option>
+				<option value="GEA">GEA</option>
+			</select>
+		</form>
+		<?php
+		if(!empty($_POST['annee'])&&!empty($_POST['departement'])){
+			$anne=$_POST['annee'];
+			$departement=$_POST['departement'];
+			$r1="select div_num from division where div_nom='$anne'";
+			$r2="select dep_num from departement where dep_nom='$departement'";
+			$req="insert into etudiant (dep_num, div_num) values ('$r1,$r2')";
+		}
+	}
 	if(!empty($_POST['nom'])&&!empty($_POST['prenom'])&&!empty($_POST['tel'])
 &&!empty($_POST['email'])&&!empty($_POST['login'])&&
 !empty($_POST['password'])){
@@ -33,10 +64,13 @@
 		$login=$_POST["login"];
 		$password=$_POST["password"];
 
-		$req="insert into ville (per_nom, per_prenom, per_tel,
+		$req="insert into personne (per_nom, per_prenom, per_tel,
 		 per_mail, per_login, per_pwd) values('$nom','$prenom',
 		 '$tel','$email','$login',$password)";
 		$result=$db->prepare($req)->execute();
+	}else{
+	 		echo 'Veuillez renseigner tous les champs';
 	}
+
 
 	?>
