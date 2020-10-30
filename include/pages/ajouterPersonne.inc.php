@@ -1,5 +1,9 @@
 				<h1>Ajouter une personne</h1>
 
+	<?php
+	$db= new Mypdo();
+	$personne= new PersonneManager($db);
+	?>
 	<form  method="post">
 		<label for="nom">Nom :</label>
     <input type="text" id="nom" name="nom"><br>
@@ -14,8 +18,10 @@
 		<label for="password">Mot de passe :</label>
 		<input type="password" id="password" name="password"><br>
 		<label for="categorie">Catégorie :</label>
-		<input type="checkbox" name="Etudiant" value="Etudiant">
-		<input type="checkbox" name="Personnel" value="Personnel">
+		<input type="checkbox" name="Etudiant">
+		<label for="Etudiant">Etudiant</label>
+		<input type="checkbox" name="Personnel">
+		<label for="Personnel">Personnel</label>
 		<input type="submit" name="Valider" value="Valider">
 	</form>
 
