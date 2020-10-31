@@ -11,7 +11,8 @@ Actuellement <?php echo $result; ?> personnes sont enregistrées.
 <table>
   <tr>
     <th>Numero</th>
-    <th>Ville</th>
+    <th>nom</th>
+    <th>prenom</th>  
   </tr>
 <?php
   $listePersonne=$personnemanag->getList();

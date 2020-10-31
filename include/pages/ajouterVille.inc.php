@@ -3,7 +3,7 @@
 
 <?php
 $db= new Mypdo();
-$villemanag= new VilleManager($db);
+$personnemanag= new PersonneManager($db);
 ?>
 
 <form id="saisieNom" method="post">
