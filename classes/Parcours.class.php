@@ -20,13 +20,14 @@ class Parcours{
 						case 'vil_num2': $this->setVil_num2($valeur); break;
 				}
 		}
+	}
 
 		public function setPar_num($id){
 			$this->par_num=$id;
 		}
 	
 		public function setPar_km($id){
-			$this->vil_num2=$id;
+			$this->par_km=$id;
 		}
 		public function getPar_num(){
 			return $this->par_num;
@@ -52,5 +53,4 @@ class Parcours{
 			return $this->vil_num2;
 		}
 	
-}
 }

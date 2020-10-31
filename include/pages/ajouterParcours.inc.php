@@ -39,7 +39,5 @@ echo"Parcours ajouté! ";
 echo "Parcours non ajouté";
   }
 
-}else{
-  echo "Veuillez remplir les champs";
 }
 ?>

@@ -10,5 +10,30 @@ class ParcoursManager{
 		$execparcours =$this->db->prepare($req)->execute();
 		return $execparcours;
 	}
+	public function getListParcours(){
+		$req="SELECT * FROM PARCOURS";
+		$reqexec= $this->db->query($req);
+		while($parcours= $reqexec->fetch(PDO::FETCH_OBJ)){
+			$listeParcours[]=new Parcours($parcours);
+		}
+		$reqexec->closeCursor();
+		return $listeParcours;
+
+	}
+	public function getListVilleParcours(){
+		$req="SELECT * FROM VILLE V, PARCOURS P WHERE V.vil_num=P.vil_num1 UNION SELECT * FROM VILLE V, PARCOURS P WHERE V.vil_num=P.vil_num2 GROUP BY vil_num";
+		$reqexec=$this->db->query($req);
+		while($ville = $reqexec->fetch(PDO::FETCH_OBJ)){
+			$listeVilles[] = new Ville($ville);
+		}
+		$reqexec->closeCursor();
+		return $listeVilles;
+	}
+	public function countParcours(){
+		$req="SELECT COUNT par_num FROM PARCOURS";
+		$reqexec=$this->db->query($req);
+		$reqexec->closeCursor();
+		return $reqexec;
+	}
 }
 	

@@ -11,7 +11,7 @@ $req="select count(*) from ville";
 $result=$db->prepare($req)->execute();
 ?>
 Actuellement <?php echo $result; ?> villes sont enregistrées.
-
+<center>
 <table>
   <tr>
     <th>Numero</th>
@@ -32,3 +32,4 @@ Actuellement <?php echo $result; ?> villes sont enregistrées.
   }
   ?>
 </table>
+<center>
