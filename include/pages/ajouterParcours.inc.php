@@ -1,33 +1,45 @@
 <h1>Ajouter un parcours</h1>
-
 <?php
 $db= new Mypdo();
-$parcoursmanag= new ParcoursManager($db);
+$villemanag= new VilleManager($db);
+$villes=$villemanag->getList();
 ?>
 
-<form id="saisieParcours" method="post">
-Ville 1:
-<select name="ville1">
-<option name="Ville1">Limoges</option> 
+<?php if (empty($_POST['Ville1']) and empty($_POST["Ville2"]) and empty($_POST["km"])){ ?>
+<form action="#" id="saisieParcours" method="post">
+<label>Ville 1:</label>
+<select name="Ville1">
+<?php foreach($villes as $ville){
+  ?>
+  <option value="<?php echo $ville->getVil_num(); ?>"> <?php echo $ville->getVil_nom(); ?>
+  </option>
+<?php } ?> 
 </select>
-Ville 2:
-<select name="ville2">
-<option name="Ville2">Bordeaux</option> 
+<label>Ville 2:</label>
+<select name="Ville2">
+<?php foreach($villes as $ville){
+  ?>
+  <option value="<?php echo $ville->getVil_num(); ?>"> <?php echo $ville->getVil_nom(); ?>
+  </option>
+<?php } ?>  
 </select>
-Nombre de kilomètre(s)
-<select name="km">
-<option name="km"></option> 
-256
-</select>
+<label>Nombre de kilomètre(s)</label>
+<input type="number" name="km"/> 
   <input type="submit" id="valider" name="valider" value="valider">
-<?php if (!empty($_POST['ville1']) and !empty($_POST[ville2]) and !empty($_POST["km"])){
-          $vil_num1=$_POST["Ville1"];
-          $vil_num2=$_POST["Ville2"];
-          $km=$_POST["km"];
-          $req="insert into parcours (par_km,vil_num1,vil_num2) values('$km','$vil_num1', '$vil_num2')";
-          $result=$db->prepare($req)->execute();
+  </form>
+<?php } 
 
-          echo "Le parcours a été ajoutée";
-}?>
-</form>
+if (!empty($_POST['Ville1']) and !empty($_POST["Ville2"]) and !empty($_POST["km"])){
+  $parcoursmanag= new ParcoursManager($db);
+  $result=$parcoursmanag->AjouterParcours($_POST["km"], $_POST["Ville1"], $_POST["Ville2"]);
+  if (!empty($result)){
+echo"Parcours ajouté! ";
+  }
+  else{
+echo "Parcours non ajouté";
+  }
 
+}else{
+  echo "Veuillez remplir les champs";
+}
+?>
