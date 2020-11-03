@@ -8,8 +8,9 @@
 $db= new Mypdo();
 $parcoursmanag= new ParcoursManager($db);
 $parcoursvillemanag=new VilleManager($db);
+$listeParcours=$parcoursmanag->getListParcours();
 ?>
-Actuellement 13 villes sont enregistrées.
+Actuellement <?php echo sizeof($listeParcours)+1; ?>  parcours sont enregistrés.
 <center>
 <table>
   <tr>
@@ -21,7 +22,8 @@ Actuellement 13 villes sont enregistrées.
 
 
 <?php
-  $listeParcours=$parcoursmanag->getListParcours();
+
+  /*$listeville=$parcoursvillemanag->getListVilleParcours();*/
   foreach($listeParcours as $parcours){
   ?>
       <tr>

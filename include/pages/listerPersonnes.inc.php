@@ -3,10 +3,9 @@
 <?php
 $db= new Mypdo();
 $personnemanag= new PersonneManager($db);
-$req="select count(*) from personne";
-$result=$db->prepare($req)->execute();
+$listePersonne=$personnemanag->getList();
 ?>
-Actuellement <?php echo $result; ?> personnes sont enregistrées.
+Actuellement <?php echo sizeof($listePersonne) ?> personnes sont enregistrées.
 
 <table>
   <tr>
@@ -15,7 +14,7 @@ Actuellement <?php echo $result; ?> personnes sont enregistrées.
     <th>prenom</th>  
   </tr>
 <?php
-  $listePersonne=$personnemanag->getList();
+
   foreach($listePersonne as $personne){
   ?>
       <tr>

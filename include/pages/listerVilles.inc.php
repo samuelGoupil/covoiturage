@@ -7,10 +7,10 @@
 <?php
 $db= new Mypdo();
 $villemanag= new VilleManager($db);
-$req="select count(*) from ville";
-$result=$db->prepare($req)->execute();
+$listeVille=$villemanag->getList();
 ?>
-Actuellement <?php echo $result; ?> villes sont enregistrées.
+Actuellement <?php echo sizeof($listeVille);
+ ?> villes sont enregistrées.
 <center>
 <table>
   <tr>
@@ -20,7 +20,7 @@ Actuellement <?php echo $result; ?> villes sont enregistrées.
 
 
 <?php
-  $listeVille=$villemanag->getList();
+
   foreach($listeVille as $ville){
   ?>
       <tr>
