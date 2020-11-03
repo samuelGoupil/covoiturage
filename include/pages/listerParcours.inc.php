@@ -2,7 +2,7 @@
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="../css/stylesheet.css" />
 </head>
-<h1>Liste des villes</h1>
+<h1>Liste des parcours</h1>
 
 <?php
 $db= new Mypdo();
