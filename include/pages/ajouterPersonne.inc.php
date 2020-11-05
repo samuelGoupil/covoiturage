@@ -1,17 +1,21 @@
-				<h1>Ajouter une personne</h1>
 <link rel="stylesheet" href="/css/stylesheet.css"/>
 	<?php
 	$db= new Mypdo();
 	$personne= new PersonneManager($db);
+
+	if(empty($_POST['nom'])&&empty($_POST['prenom'])&&empty($_POST['tel'])
+&&empty($_POST['email'])&&empty($_POST['login'])&&
+empty($_POST['password'])){
 	?>
+<h1>Ajouter une personne</h1>
 	<form  method="post">
 		<div id="right">
-			<label for="password">Mot de passe :</label>
-			<input type="password" id="password" name="password"><br>
-			<label for="email">Email :</label>
-	    <input type="email" id="email" name="email"><br>
 			<label for="prenom">Prenom :</label>
 	    <input type="text" id="prenom" name="prenom"><br>
+			<label for="email">Email :</label>
+	    <input type="email" id="email" name="email"><br>
+			<label for="password">Mot de passe :</label>
+			<input type="password" id="password" name="password"><br>
 		</div>
 
 		<div id="left">
@@ -20,21 +24,21 @@
 			<label for="tel">Téléphone :</label>
 	    <input type="tel" id="tel" name="tel"><br>
 			<label for="login">Login :</label>
-			<input type="text" id="logoin" name="login"><br>
+			<input type="text" id="logoin" name="login"><br><br>
 		</div>
 
 		<div id="center">
 			<label for="categorie">Catégorie :</label>
-			<input type="checkbox" name="Etudiant">
+			<input type="radio" name="Etudiant">
 			<label for="Etudiant">Etudiant</label>
-			<input type="checkbox" name="Personnel">
-			<label for="Personnel">Personnel</label><br>
+			<input type="radio" name="Etudiant">
+			<label for="Personnel">Personnel</label><br><br>
 			<input type="submit" name="Valider" value="Valider">
 		</div>
 	</form>
 
 	<?php
-
+}
 
 
 	if(!empty($_POST['nom'])&&!empty($_POST['prenom'])&&!empty($_POST['tel'])
@@ -51,17 +55,10 @@
 		 per_mail, per_login, per_pwd) values('$nom','$prenom',
 		 '$tel','$email','$login','$password')";
 		$result=$db->prepare($req)->execute();
-	}else{
-	 		echo 'Veuillez renseigner tous les champs';
 	}
 
-	if (empty($_POST['Etudiant'])&&empty($_POST['Personnel'])){
-		echo 'veuillez choisir une catégorie';
-	}
-	if (!empty($_POST['Etudiant'])&&!empty($_POST['Personnel'])){
-		echo 'veuillez choisir une seule catégorie';
-	}
-	if (!empty($_POST['Etudiant'])&&empty($_POST['Personnel'])){
+
+	if (!empty($_POST['Etudiant'])){
 		?>
 		<h2>Ajouter un étudiant</h2>
 		<form  method="post">
