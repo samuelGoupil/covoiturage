@@ -24,8 +24,8 @@ Actuellement <?php echo sizeof($listeVille);
   foreach($listeVille as $ville){
   ?>
       <tr>
-        <td> <?php echo $ville ->getVil_num();?></td>
         <td> <?php echo $ville ->getVil_nom();?></td>
+        <td> <?php echo $ville ->getVil_num();?></td>
       </tr>
 
   <?php

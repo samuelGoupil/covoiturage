@@ -20,20 +20,6 @@ class ParcoursManager{
 		return $listeParcours;
 
 	}
-	public function getListVilleParcours($ville1,$ville2){
-		$req="SELECT * FROM VILLE V, PARCOURS P WHERE V.vil_num=P.vil_num1 UNION SELECT * FROM VILLE V, PARCOURS P WHERE V.vil_num=P.vil_num2 GROUP BY vil_num";
-		$reqexec=$this->db->query($req);
-		while($ville = $reqexec->fetch(PDO::FETCH_OBJ)){
-			$listeVilles[] = new Ville($ville);
-		}
-		$reqexec->closeCursor();
-		return $listeVilles;
-	}
-	public function countParcours(){
-		$req="SELECT COUNT(*) FROM PARCOURS";
-		$reqexec=$this->db->query($req);
-		$reqexec->closeCursor();
-		return $reqexec;
-	}
+
 }
 	

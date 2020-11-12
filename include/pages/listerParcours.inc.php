@@ -7,14 +7,22 @@
 <?php
 $db= new Mypdo();
 $parcoursmanag= new ParcoursManager($db);
-$parcoursvillemanag=new VilleManager($db);
 $listeParcours=$parcoursmanag->getListParcours();
+
+$db2= new Mypdo();
+$parcoursvillemanag=new VilleManager($db2);
+$listeParcoursVille=$parcoursvillemanag->getListVilleParcours();
+
+$parcoursvillemanag2=new VilleManager($db2);
+$listeParcoursVille2=$parcoursvillemanag2->getListVilleParcours2();
 ?>
 Actuellement <?php echo sizeof($listeParcours)+1; ?>  parcours sont enregistrés.
 <center>
 <table>
   <tr>
     <th>Numero</th>
+    <table>
+    <tr>
     <th>Nom ville</th>
     <th>Nom ville</th>
     <th>Nombre de Km</th>
@@ -22,19 +30,17 @@ Actuellement <?php echo sizeof($listeParcours)+1; ?>  parcours sont enregistrés
 
 
 <?php
-
-  /*$listeville=$parcoursvillemanag->getListVilleParcours();*/
   foreach($listeParcours as $parcours){
-  ?>
+    foreach($listeParcoursVille as $ville){
+      ?>
       <tr>
         <td> <?php echo $parcours ->getPar_num();?></td>
+        <td> <?php echo $ville ->getVil_nom();?></td>     
         <td> <?php echo $parcours ->getPar_km();?></td>   
-        <td> <?php echo $parcours ->getVil_num1();?></td>
-        <td> <?php echo $parcours ->getVil_num2();?></td>   
         <?php
          }
-        ?>
+      }
+         ?>
       </tr>
-
-</table>
+  </table>
 </center>
