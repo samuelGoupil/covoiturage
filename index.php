@@ -16,4 +16,4 @@ require_once("include/texte.inc.php");
 <?php
 require_once("include/footer.inc.php"); ?>
 
-<?php require_once("include/Mypdo.class.php") ?>
+<?php require_once("classes/Mypdo.class.php") ?>

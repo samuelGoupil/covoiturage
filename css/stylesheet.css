@@ -166,8 +166,10 @@ h1{
 }
 table
 {
-		border: 1px solid black;
-    border-collapse: collapse;
+	border: 1px solid black;
+	border-collapse: collapse;
+	display:block;
+	margin:auto;
 }
 td
 {
