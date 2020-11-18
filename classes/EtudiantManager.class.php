@@ -1,5 +1,7 @@
 <?php
 class EtudiantManager{
-	//A COMPLETER
-	
+	public function __construct($db){
+		$this->db =$db;
+	}
+
 }

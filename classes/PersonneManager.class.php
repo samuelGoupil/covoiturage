@@ -3,7 +3,7 @@ class PersonneManager{
 	public function __construct($db){
 		$this->db =$db;
 	}
-
+	
 	public function getList(){
 		$listePersonne=array();
 		$sql="Select per_num, per_nom, per_prenom

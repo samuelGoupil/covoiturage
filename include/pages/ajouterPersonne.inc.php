@@ -44,17 +44,9 @@ empty($_POST['password'])){
 	if(!empty($_POST['nom'])&&!empty($_POST['prenom'])&&!empty($_POST['tel'])
 &&!empty($_POST['email'])&&!empty($_POST['login'])&&
 !empty($_POST['password'])){
-		$nom=$_POST["nom"];
-		$prenom=$_POST["prenom"];
-		$tel=$_POST["tel"];
-		$email=$_POST["email"];
-		$login=$_POST["login"];
-		$password=$_POST["password"];
-
-		$req="insert into personne (per_nom, per_prenom, per_tel,
-		 per_mail, per_login, per_pwd) values('$nom','$prenom',
-		 '$tel','$email','$login','$password')";
-		$result=$db->prepare($req)->execute();
+	$personnemanag= new PersonneManager($db);
+	$result=$personnemanag->AjouterPersonne($_POST['nom'], $_POST["prenom"], $_POST["tel"],
+	$_POST["email"], $_POST["login"], $_POST["password"] );
 
 		if (!empty($_POST['role'])){
 			$role=$_POST['role'];
