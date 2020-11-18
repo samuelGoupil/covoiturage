@@ -29,9 +29,9 @@ empty($_POST['password'])){
 
 		<div id="center">
 			<label for="categorie">Catégorie :</label>
-			<input type="radio" name="Etudiant">
+			<input type="radio" name="role" value="etudiant">
 			<label for="Etudiant">Etudiant</label>
-			<input type="radio" name="Etudiant">
+			<input type="radio" name="role" value="personnel">
 			<label for="Personnel">Personnel</label><br><br>
 			<input type="submit" name="Valider" value="Valider">
 		</div>
@@ -55,42 +55,49 @@ empty($_POST['password'])){
 		 per_mail, per_login, per_pwd) values('$nom','$prenom',
 		 '$tel','$email','$login','$password')";
 		$result=$db->prepare($req)->execute();
-	}
 
-
-	if (!empty($_POST['Etudiant'])){
-		?>
-		<h2>Ajouter un étudiant</h2>
-		<form  method="post">
-			<label for="year">Année :</label>
-			<select  name="annee" value="Année 1">
-				<option value="Année 1">Année 1</option>
-				<option value="Année 2">Année 2</option>
-				<option value="Année spéciale">Année spéciale</option>
-				<option value="Licence Professionnelle"></option>
-			</select>
-			<label for="departement">Département :</label>
-			<select  name="departement" value="">
-				<option value="Génie civil">Génie civil</option>
-				<option value="Informatique">Informatique</option>
-				<option value="GEA">GEA</option>
-			</select>
-			<input type="submit" name="valider" value="Valider">
-		</form>
-		<?php
-		if(!empty($_POST['annee'])&&!empty($_POST['departement'])){
-			$anne=$_POST['annee'];
-			$departement=$_POST['departement'];
-			$r1="select div_num from division where div_nom='$anne'";
-			$r2="select dep_num from departement where dep_nom='$departement'";
-			$r0='select per_num from personne
-			where per_num >=ALL(select per_num from personne)';
-			$req="insert into etudiant (per_num, dep_num, div_num)
-			values ('$r0','$r1','$r2')";
-			$result=$db->prepare($req)->execute();
-			echo "L'étudiant a été ajouté.";
+		if (!empty($_POST['role'])){
+			$role=$_POST['role'];
+			if($role=="etudiant"){
+				?>
+				<h2>Ajouter un étudiant</h2>
+				<form  method="post">
+					<label for="year">Année :</label>
+					<select  name="annee" value="Année 1">
+						<option value="Année 1">Année 1</option>
+						<option value="Année 2">Année 2</option>
+						<option value="Année spéciale">Année spéciale</option>
+						<option value="Licence Professionnelle"></option>
+					</select>
+					<label for="departement">Département :</label>
+					<select  name="departement" value="">
+						<option value="Génie civil">Génie civil</option>
+						<option value="Informatique">Informatique</option>
+						<option value="GEA">GEA</option>
+					</select>
+					<input type="submit" name="valider" value="Valider">
+				</form>
+				<?php
+				if(!empty($_POST['annee'])&&!empty($_POST['departement'])){
+					$anne=$_POST['annee'];
+					$departement=$_POST['departement'];
+					$r1="select div_num from division where div_nom='$anne'";
+					$r2="select dep_num from departement where dep_nom='$departement'";
+					$r0="select per_num from personne
+					where per_num >=ALL(select per_num from personne)";
+					$req="insert into etudiant (per_num, dep_num, div_num)
+					values ('$r0','$r1','$r2')";
+					$result=$db->prepare($req)->execute();
+					echo "L'étudiant a été ajouté.";
+				}
+			}else{
+				echo "fromulaire personnel";
+			}
 		}
 	}
+
+
+
 
 
 

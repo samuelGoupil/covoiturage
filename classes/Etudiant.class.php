@@ -1,5 +1,4 @@
 <?php
-class Etudiant{
-	//A COMPLETER
-	
+public function __construct($db){
+	$this->db =$db;
 }

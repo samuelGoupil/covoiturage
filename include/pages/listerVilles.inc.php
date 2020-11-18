@@ -32,4 +32,4 @@ Actuellement <?php echo sizeof($listeVille);
   }
   ?>
 </table>
-<center>
+</center>
