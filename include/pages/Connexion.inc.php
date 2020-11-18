@@ -2,6 +2,7 @@
 <?php
 $db= new Mypdo();
 $personnemanag= new PersonneManager($db);
+
 ?>
 
 <html lang="fr">
@@ -11,7 +12,7 @@ $personnemanag= new PersonneManager($db);
     <meta name="Keywords" content="HTML, CSS"/>
     <meta name="Description" content="HTML"/>
     </head>
-    <form id="LoginForm" action="Connexion.php" method="POST">
+    <form id="LoginForm" action="#" method="POST">
         <p>
             <label for="login">Nom d'utilisateur :</label>
             <input autocomplete="off" type="text" id="login" name="login" value="" />
@@ -29,10 +30,13 @@ $personnemanag= new PersonneManager($db);
         if (!empty($_POST['login'])){
             $login=$_POST["login"];
             $motPasse=$_POST["motPasse"];
-            echo $login;
-            $req = $bdd->prepare("SELECT per_login, per_pwd FROM personne WHERE per_login =$login AND per_pwd= $per_pwd");
-            $req->execute(array('pseudo' => $pseudo));
-            $resultat = $req->fetch();
+            $result=$personnemanag->verifpersonne($login,$motPasse);
+            if(!empty($result)){
+                echo "Vous pouvez vous connecter";
+            }
+            else{
+                echo "Pas d'utilisateur trouve";
+            }
         }
         ?>
         </body>
