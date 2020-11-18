@@ -15,6 +15,9 @@ class PersonneManager{
 		return $listePersonne;
 		$req->closeCursor();
 	}
-	//public function verifpersonne($username,$pwd) variable de session au retour de verif personne puis enlever la variable de session dans deconnexion
-
+	public function verifpersonne($login,$pwd){
+		$req="SELECT * FROM PERSONNE WHERE per_login='$login' AND per_pwd='$pwd'";
+		$reqexe=$this->db->prepare($req)->execute();
+		return $reqexe;
+	}
 }
