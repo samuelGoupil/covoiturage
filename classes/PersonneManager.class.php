@@ -15,5 +15,6 @@ class PersonneManager{
 		return $listePersonne;
 		$req->closeCursor();
 	}
+	//public function verifpersonne($username,$pwd) variable de session au retour de verif personne puis enlever la variable de session dans deconnexion
 
 }

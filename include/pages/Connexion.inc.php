@@ -10,6 +10,7 @@ $personnemanag= new PersonneManager($db);
     <meta charset="utf-8">
     <meta name="Keywords" content="HTML, CSS"/>
     <meta name="Description" content="HTML"/>
+    </head>
     <form id="LoginForm" action="Connexion.php" method="POST">
         <p>
             <label for="login">Nom d'utilisateur :</label>
@@ -25,15 +26,14 @@ $personnemanag= new PersonneManager($db);
     </form>
     <?php 
 
-
-    if (!empty($_POST['login'])){
-        $login=$_POST["login"];
-        $motPasse=$_POST["motPasse"];
-        echo $login;
-        $req = $bdd->prepare("SELECT per_login, per_pwd FROM personne WHERE per_login =$login AND per_pwd= $per_pwd");
-        $req->execute(array(
-        'pseudo' => $pseudo));
-        $resultat = $req->fetch();
+        if (!empty($_POST['login'])){
+            $login=$_POST["login"];
+            $motPasse=$_POST["motPasse"];
+            echo $login;
+            $req = $bdd->prepare("SELECT per_login, per_pwd FROM personne WHERE per_login =$login AND per_pwd= $per_pwd");
+            $req->execute(array('pseudo' => $pseudo));
+            $resultat = $req->fetch();
+        }
         ?>
         </body>
 </html>
