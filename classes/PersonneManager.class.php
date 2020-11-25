@@ -22,7 +22,7 @@ class PersonneManager{
 		$req->closeCursor();
 	}
 	public function verifpersonne($login,$pwd){
-		$req="SELECT * FROM PERSONNE WHERE per_login='$login' AND per_pwd='$pwd'";
+		$req="SELECT per_login FROM PERSONNE WHERE per_login='$login' AND per_pwd='$pwd'";
 		$reqexe=$this->db->prepare($req)->execute();
 		return $reqexe;
 	}
