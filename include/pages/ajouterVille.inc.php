@@ -13,9 +13,8 @@ $personnemanag= new PersonneManager($db);
 </form>
 
 <?php if (!empty($_POST['nom'])){
-          $nom=$_POST["nom"];
-          $req="insert into ville (vil_nom) values('$nom')";
-          $result=$db->prepare($req)->execute();
+  $villemanag= new VilleManager($db);
+  $result=$villemanag->AjouterVille($_POST['nom']);
 
           echo "La ville ".$_POST['nom']." a été ajoutée";
 }?>

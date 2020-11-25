@@ -5,8 +5,9 @@ class EtudiantManager{
 	}
 
 	public function AjouterEtudiant($dep_num, $div_num){
-		$req= "INSERT INTO Etudiant (dep_num, div_num)
-		VALUES ('$dep_num', '$div_num')";
+		$per_num="SELECT per_num FROM PERSONNE WHERE per_num>=ALL(SELECT per_num FROM PERSONNE)"
+		$req= "INSERT INTO Etudiant (per_num, dep_num, div_num)
+		VALUES ('$per_num', '$dep_num', '$div_num')";
 		$execetudiant=$this->db->prepare($req)->execute();
 		return $execetudiant;
 	}

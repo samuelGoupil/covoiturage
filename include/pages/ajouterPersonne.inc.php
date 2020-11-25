@@ -76,7 +76,19 @@ empty($_POST['password'])){
 					echo "L'étudiant a été ajouté.";
 				}
 			}else{
-				echo "formulaire personnel";
+				?>
+				<h2>Ajouter un salarié</h2>
+				<form  method="post">
+					<label for="telprof">Téléphone professionnel :</label>
+					<input type="tel" name="telprof" value="">
+					<label for="fonction">Fonction :</label>
+					<select  name="fonction" value="">
+						<option value=""></option>
+						<option value=""></option>
+						<option value=""></option>
+					</select>
+					<input type="submit" name="valider" value="Valider">
+				</form>
 			}
 		}
 	}
