@@ -6,7 +6,7 @@ class PersonneManager{
 
 	public function AjouterPersonne($per_nom, $per_prenom, $per_tel, $per_mail, $per_login, $per_pwd){
 		$req= "INSERT INTO personne (per_nom, per_prenom, per_tel, per_mail,per_login,per_pwd )
-		VALUES ('$per_nom', '$per_prenom', '$per_tel', '$per_mail', '$per_login', '$per_tel')";
+		VALUES ('$per_nom', '$per_prenom', '$per_tel', '$per_mail', '$per_login', '$per_pwd')";
 		$execpersonne =$this->db->prepare($req)->execute();
 		return $execpersonne;
 	}

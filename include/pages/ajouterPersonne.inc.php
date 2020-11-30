@@ -71,19 +71,24 @@ empty($_POST['password'])){
 				</form>
 				<?php
 				if(!empty($_POST['annee'])&&!empty($_POST['departement'])){
-					$anne=$_POST['annee'];
-					$departement=$_POST['departement'];
-					$r1="select div_num from division where div_nom='$anne'";
-					$r2="select dep_num from departement where dep_nom='$departement'";
-					$r0="select per_num from personne
-					where per_num >=ALL(select per_num from personne)";
-					$req="insert into etudiant (per_num, dep_num, div_num)
-					values ('$r0','$r1','$r2')";
-					$result=$db->prepare($req)->execute();
+					$etudiantmanag= new EtudiantManager($db);
+					$result=$etudiantmanag->AjouterEtudiant($_POST['anne'], $_POST["departement"]);
 					echo "L'étudiant a été ajouté.";
 				}
 			}else{
-				echo "fromulaire personnel";
+				?>
+				<h2>Ajouter un salarié</h2>
+				<form  method="post">
+					<label for="telprof">Téléphone professionnel :</label>
+					<input type="tel" name="telprof" value="">
+					<label for="fonction">Fonction :</label>
+					<select  name="fonction" value="">
+						<option value=""></option>
+						<option value=""></option>
+						<option value=""></option>
+					</select>
+					<input type="submit" name="valider" value="Valider">
+				</form>
 			}
 		}
 	}

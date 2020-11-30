@@ -6,6 +6,13 @@ class VilleManager{
 		$this->db =$db;
 	}
 
+	public function AjouterVille($vil_nom){
+		$req= "INSERT INTO VILLE (vil_nom)
+		VALUES ('$vil_nom')";
+		$execVille=$this->db->prepare($req)->execute();
+		return $execVille;
+	}
+
 	public function getList(){
 		$listeVille=array();
 		$sql="Select vil_num, vil_nom from ville order by vil_num";
@@ -25,7 +32,7 @@ class VilleManager{
 		}
 		$reqexec->closeCursor();
 		return $villeRetour;
-		
+
 	}
-	
+
 }
