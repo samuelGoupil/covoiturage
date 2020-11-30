@@ -89,14 +89,12 @@ empty($_POST['password'])){
 					</select>
 					<input type="submit" name="valider" value="Valider">
 				</form>
+				<?php
+				if(!empty($_POST['telprof'])&&!empty($_POST['fonction'])){
+					$etudiantmanag= new EtudiantManager($db);
+					$result=$etudiantmanag->AjouterEtudiant($_POST['telprof'], $_POST["fonction"]);
+					echo "L'étudiant a été ajouté.";
 			}
 		}
 	}
-
-
-
-
-
-
-
-	?>
+?>
