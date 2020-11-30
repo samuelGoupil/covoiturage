@@ -20,6 +20,16 @@ class ParcoursManager{
 		return $listeParcours;
 
 	}
+	public function getListeParcours(){
+		$req="SELECT vil_nom FROM PARCOURS";
+		$reqexec= $this->db->query($req);
+		while($parcours= $reqexec->fetch(PDO::FETCH_OBJ)){
+			$listeParcours[]=new Parcours($parcours);
+		}
+		$reqexec->closeCursor();
+		return $listeParcours;
+
+	}
 
 }
 	

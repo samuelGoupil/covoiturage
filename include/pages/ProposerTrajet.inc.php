@@ -3,21 +3,42 @@
 <?php
 $db= new Mypdo();
 $parcoursmanag= new ParcoursManager($db);
-$parcoursville=$parcoursmanag->getListParcours();
+$listeParcours=$parcoursmanag->getListParcours();
+
 $parcoursvillemanag=new VilleManager($db);
-$villes=$parcoursvillemanag->getList();
 
 ?>
 
-<?php if (empty($_POST['Ville1']) and empty($_POST["Ville2"]) and empty($_POST["km"])){ ?>
-<form action="#" id="saisieParcours" method="post">
+<?php if (empty($_POST['Ville1'])){ ?>
+<form action="#" id="saisieVille" method="post">
 <label>Ville 1:</label>
 <select name="Ville1">
-<?php foreach($villes as $ville){
+<?php foreach($listeParcours as $parcours){
   ?>
-  <option> <?php echo $parcoursvillemanag->getVilleByID($parcours->getVil_num1())->getVil_nom(); ?> 
+  <option> <?php echo $parcoursvillemanag->getVilleByID($parcours->getVil_num1())->getVil_nom(); ?>  </option>
+  <option> <?php echo $parcoursvillemanag->getVilleByID($parcours->getVil_num2())->getVil_nom(); ?> 
   </option>
 <?php } ?> 
 </select>
+<input type="submit" id="valider" name="valider" value="valider">
 </form>
-<?php } ?>
+<?php }
+if (!empty($_POST['Ville1'])){ 
+  echo "Ville de depart : ".$_POST['Ville1']; ?>
+  <form action="#" id="SaisieTrajet" method="post">
+  <label for="nom">Date de départ</label>
+  <input type="date" id="nom" name="date">
+  <label for="nbplace">Nombre de places</label>
+  <input type="text" id="nom" name="nbplace">
+  <label for="nbplace">Heure de départ</label>
+  <input type="text" id="nom" name="heuredep">
+  <label>Ville 1:</label>
+  <select name="Ville1">
+  <?php foreach($listeParcours as $parcours){
+  ?>
+  <option> <?php echo $parcoursvillemanag->getVilleByID($parcours->getVil_num1())->getVil_nom(); ?>  </option>
+  <?php
+  } ?>
+  <input type="submit" id="valider" name="valider" value="valider">
+<?php
+} ?>
