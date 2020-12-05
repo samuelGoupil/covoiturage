@@ -33,5 +33,6 @@ Actuellement <?php echo sizeof($listeParcours)+1; ?>  parcours sont enregistrés
         <?php
       }
          ?>
+     </table>
+
          
-  </table>

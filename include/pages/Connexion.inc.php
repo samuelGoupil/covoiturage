@@ -32,7 +32,11 @@ $personnemanag= new PersonneManager($db);
             $motPasse=$_POST["motPasse"];
             $result=$personnemanag->verifpersonne($login,$motPasse);
             if(!empty($result)){
-                echo "Vous pouvez vous connecter";
+                $_SESSION["login"]=$login;
+                $_SESSION["MotDePasse"]=$motPasse; ?>
+                <script type='text/javascript'>window.location.href='index.php'</script>
+                <?php
+
             }
             else{
                 echo "Pas d'utilisateur trouve";
