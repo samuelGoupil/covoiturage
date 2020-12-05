@@ -5,7 +5,7 @@ class SalarieManager{
 	}
 
 	public function AjouterSalarie($sal_telprof, $fon_num){
-		$per_num="SELECT per_num FROM PERSONNE WHERE per_num>=ALL(SELECT per_num FROM PERSONNE)"
+		$per_num=$_SESSION["numpersonne"];
 		$req= "INSERT INTO SALARIE (per_num, sal_telprof, fon_num)
 		VALUES ('$per_num','$sal_telprof', '$fon_num')";
 		$execsalarie=$this->db->prepare($req)->execute();
