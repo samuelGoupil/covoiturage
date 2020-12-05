@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="/css/stylesheet.css"/>
 	<?php
 	$db= new Mypdo();
-	$personne= new PersonneManager($db);
+//	$personne= new PersonneManager($db);
 
 	if(empty($_POST['nom'])&&empty($_POST['prenom'])&&empty($_POST['tel'])
 &&empty($_POST['email'])&&empty($_POST['login'])&&
@@ -71,12 +71,15 @@ empty($_POST['password'])){
 					<input type="submit" name="valider" value="Valider">
 				</form>
 				<?php
-				if(!empty($_POST['annee'])&&!empty($_POST['departement'])){
+				if(empty($_POST['annee'])&&empty($_POST['departement'])){
+					echo "qqch";
 					$etudiantmanag= new EtudiantManager($db);
 					$result=$etudiantmanag->AjouterEtudiant($_POST["departement"],$_POST['anne']);
 					echo "L'étudiant a été ajouté.";
 				}
 			}
+
+
 			if($role=="personnel"){
 				?>
 				<h2>Ajouter un salarié</h2>
@@ -85,17 +88,23 @@ empty($_POST['password'])){
 					<input type="tel" name="telprof" value="">
 					<label for="fonction">Fonction :</label>
 					<select  name="fonction" value="">
-						<option value=""></option>
-						<option value=""></option>
-						<option value=""></option>
+						<option value="1">Directeur</option>
+						<option value="2">Chef de departement</option>
+						<option value="3">Technicien</option>
+						<option value="4">Secrétaire</option>
+						<option value="5">Ingénieur</option>
+						<option value="6">Imprimeur</option>
+						<option value="7">Enseignant</option>
+						<option value="8">Chercheur</option>
 					</select>
 					<input type="submit" name="valider" value="Valider">
 				</form>
 				<?php
-				if(!empty($_POST['telprof'])&&!empty($_POST['fonction'])){
-					$etudiantmanag= new EtudiantManager($db);
-					$result=$etudiantmanag->AjouterEtudiant($_POST['telprof'], $_POST["fonction"]);
-					echo "L'étudiant a été ajouté.";
+
+				if(empty($_POST['telprof'])&&empty($_POST['fonction'])){
+					$salariemanag= new SalarieManager($db);
+					$result=$salariemanag->AjouterSalarie($_POST['telprof'], $_POST['fonction']);
+					echo "Le salarie a été ajouté.";
 				}
 			}
 		}
