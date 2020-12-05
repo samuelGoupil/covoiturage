@@ -64,6 +64,14 @@ empty($_POST['password'])){
 					</select>
 					<label for="departement">Département :</label>
 					<select  name="departement" value="">
+						<?php
+						$depmanag= new DepartementManager;
+						$listeDepartement=$depmanag->getList();
+						foreach($listedep as $departement){
+							?>
+							<option value=""><?php echo $departement->getList ?></option>
+
+						}
 						<option value="???">Génie civil</option>
 						<option value="???">Informatique</option>
 						<option value="???">GEA</option>
@@ -71,7 +79,7 @@ empty($_POST['password'])){
 					<input type="submit" name="valider" value="Valider">
 				</form>
 				<?php
-				if(empty($_POST['annee'])&&empty($_POST['departement'])){
+				if(!empty($_POST['annee'])&&!empty($_POST['departement'])){
 					echo "qqch";
 					$etudiantmanag= new EtudiantManager($db);
 					$result=$etudiantmanag->AjouterEtudiant($_POST["departement"],$_POST['anne']);
@@ -101,7 +109,7 @@ empty($_POST['password'])){
 				</form>
 				<?php
 
-				if(empty($_POST['telprof'])&&empty($_POST['fonction'])){
+				if(!empty($_POST['telprof'])&&!empty($_POST['fonction'])){
 					$salariemanag= new SalarieManager($db);
 					$result=$salariemanag->AjouterSalarie($_POST['telprof'], $_POST['fonction']);
 					echo "Le salarie a été ajouté.";
