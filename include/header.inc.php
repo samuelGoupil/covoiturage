@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php session_start();?>
 <!doctype html>
 <html lang="fr">
 
@@ -27,8 +27,13 @@
 			</div>
 			</div>
 			<div id="connect">
-				<a href="index.php?page=11">Connexion</a>
+			<?php 
+			if (!empty ($_SESSION["login"])) {
+				?> <a href="index.php?page=11">Connexion</a>
+			<?php } 
+			else  {	?>
+				<a href="index.php?page=12">Utilisateur: <?php echo $_SESSION["login"]; ?> </a>
+			<?php } ?>
 			</div>
 	</div>
-	
 

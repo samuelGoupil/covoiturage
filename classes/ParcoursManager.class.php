@@ -30,6 +30,11 @@ class ParcoursManager{
 		return $listeParcours;
 
 	}
+	public function getVilleCompatible($vil_num){
+		$req= "SELECT * FROM parcours WHERE vil_num1=$vil_num";
+		$execparcours =$this->db->prepare($req)->execute();
+		return $execparcours;
+	}
 
 }
 	
