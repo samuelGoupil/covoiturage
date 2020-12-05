@@ -14,8 +14,8 @@ class Personne{
 	if (!empty($valeurs))
 			//print_r ($valeurs);
 			 $this->affecte($valeurs);
-}
-public function affecte($donnees){
+}	
+	public function affecte($donnees){
 			foreach ($donnees as $attribut => $valeur){
 					switch ($attribut){
 							case 'per_num': $this->setPer_num($valeur); break;

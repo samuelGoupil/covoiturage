@@ -19,7 +19,7 @@ $personnemanag= new PersonneManager($db);
         </p>
         <p>
         <label for="motPasse">Mot de passe :</label>
-        <input autocomplete="off" type="text" id="motPasse" name="motPasse"/>
+        <input autocomplete="off" type="password" id="motPasse" name="motPasse"/>
         </p>
         <p>
             <input type="submit" value="Connexion" />
@@ -28,12 +28,11 @@ $personnemanag= new PersonneManager($db);
     <?php 
 
         if (!empty($_POST['login'])){
-            $login=$_POST["login"];
-            $motPasse=$_POST["motPasse"];
-            $result=$personnemanag->verifpersonne($login,$motPasse);
+            $result=$personnemanag->verifpersonne($_POST["login"],$_POST["motPasse"]);
             if(!empty($result)){
-                $_SESSION["login"]=$login;
-                $_SESSION["MotDePasse"]=$motPasse; ?>
+                $_SESSION["login"]=$_POST["login"];
+                $_SESSION["MotDePasse"]=$_POST["motPasse"];
+                $_SESSION["Num"]=$result->getPer_num(); ?>
                 <script type='text/javascript'>window.location.href='index.php'</script>
                 <?php
 
