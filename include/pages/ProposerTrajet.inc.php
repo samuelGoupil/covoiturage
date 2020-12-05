@@ -1,5 +1,5 @@
 
-<h1>Proposer un trajet</h1>
+<?php if (!empty ($_SESSION["login"])){ ?><h1>Proposer un trajet</h1>
 <?php
 $db= new Mypdo();
 $parcoursmanag= new ParcoursManager($db);
@@ -47,4 +47,4 @@ if (!empty($_POST['Ville1'])){
   } ?>
   <input type="submit" id="valider" name="valider" value="valider">
 <?php
-} ?>
+} }?>

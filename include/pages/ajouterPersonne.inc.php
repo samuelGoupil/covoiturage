@@ -74,7 +74,7 @@ empty($_POST['password'])){
 				if(empty($_POST['annee'])&&empty($_POST['departement'])){
 					echo "qqch";
 					$etudiantmanag= new EtudiantManager($db);
-					$result=$etudiantmanag->AjouterEtudiant($_POST["departement"],$_POST['anne']);
+					$result=$etudiantmanag->AjouterEtudiant($_POST['departement'],$_POST['annee']);
 					echo "L'étudiant a été ajouté.";
 				}
 			}
