@@ -28,4 +28,15 @@ class Departement{
 	public function setVil_nom($id){
 		    $this->vil_num=$id;
 		}
+  public function getDep_num(){
+  		return $this->dep_num;
+	}
+
+	public function getDep_nom(){
+  		return $this->dep_nom;
+	}
+  public function getVil_nom(){
+      return $this->vil_nom;
+  }
+
 }

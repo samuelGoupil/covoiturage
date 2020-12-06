@@ -67,14 +67,11 @@ empty($_POST['password'])){
 						<?php
 						$depmanag= new DepartementManager;
 						$listeDepartement=$depmanag->getList();
-						foreach($listedep as $departement){
+						print_r($listeDepartement);
+						foreach($listeDepartement as $departement){
 							?>
-							<option value=""><?php echo $departement->getList ?></option>
-
-						}
-						<option value="???">Génie civil</option>
-						<option value="???">Informatique</option>
-						<option value="???">GEA</option>
+							<option value="<?php $departement->getDep_num ?>"><?php echo $departement ?></option>
+					<?php } ?>
 					</select>
 					<input type="submit" name="valider" value="Valider">
 				</form>
