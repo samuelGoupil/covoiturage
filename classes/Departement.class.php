@@ -25,7 +25,7 @@ class Departement{
 	public function setDep_nom($id){
 	      $this->dep_nom=$id;
 	  }
-	public function setVil_nom($id){
+	public function setVil_num($id){
 		    $this->vil_num=$id;
 		}
   public function getDep_num(){

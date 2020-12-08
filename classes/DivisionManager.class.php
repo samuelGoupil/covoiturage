@@ -4,7 +4,7 @@ class DivisionManager{
 		$this->db =$db;
 	}
 
-	public function DivisionEtudiant($div_num, $div_nom){
+	public function AjouterDivision($div_num, $div_nom){
 		$req= "INSERT INTO Division (div_num, div_nom)
 		VALUES ('$div_num','$div_nom')";
 		echo $req;

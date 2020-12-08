@@ -29,7 +29,7 @@ empty($_POST['password'])){
 
 		<div id="center">
 			<label for="categorie">Catégorie :</label>
-			<input type="radio" name="role" value="etudiant">
+			<input checked type="radio" name="role" value="etudiant">
 			<label for="Etudiant">Etudiant</label>
 			<input type="radio" name="role" value="personnel">
 			<label for="Personnel">Personnel</label><br><br>
@@ -53,24 +53,29 @@ empty($_POST['password'])){
 			echo $role;
 
 			if($role=="etudiant"){?>
+
 				<h2>Ajouter un étudiant</h2>
+
 				<form  method="post">
 					<label for="year">Année :</label>
-					<select  name="annee" value="Année 1">
-						<option value="1">Année 1</option>
-						<option value="2">Année 2</option>
-						<option value="3">Année spéciale</option>
-						<option value="4">Licence professionnelle</option>
-					</select>
-					<label for="departement">Département :</label>
-					<select  name="departement" value="">
+					<select  name="annee">
 						<?php
-						$depmanag= new DepartementManager;
+						$divmanag= new DivisionManager($db);
+						$listeDivision=$divmanag->getList();
+						foreach($listeDivision as $division){
+							?>
+							<option value="<?php echo $division->getDiv_num() ?>"><?php echo $division->getDiv_nom() ?></option>
+					<?php } ?>
+					</select>
+
+					<label for="departement">Département :</label>
+					<select  name="departement">
+						<?php
+						$depmanag= new DepartementManager($db);
 						$listeDepartement=$depmanag->getList();
-						print_r($listeDepartement);
 						foreach($listeDepartement as $departement){
 							?>
-							<option value="<?php $departement->getDep_num ?>"><?php echo $departement ?></option>
+							<option value="<?php echo $departement->getDep_num() ?>"><?php echo $departement->getDep_nom() ?></option>
 					<?php } ?>
 					</select>
 					<input type="submit" name="valider" value="Valider">
@@ -93,14 +98,13 @@ empty($_POST['password'])){
 					<input type="tel" name="telprof" value="">
 					<label for="fonction">Fonction :</label>
 					<select  name="fonction" value="">
-						<option value="1">Directeur</option>
-						<option value="2">Chef de departement</option>
-						<option value="3">Technicien</option>
-						<option value="4">Secrétaire</option>
-						<option value="5">Ingénieur</option>
-						<option value="6">Imprimeur</option>
-						<option value="7">Enseignant</option>
-						<option value="8">Chercheur</option>
+						<?php
+						$fonmanag= new FonctionManager($db);
+						$listeFonction=$fonmanag->getList();
+						foreach($listeFonction as $fonction){
+							?>
+							<option value="<?php echo $fonction->getFon_num() ?>"><?php echo $fonction->getFon_libelle() ?></option>
+					<?php } ?>
 					</select>
 					<input type="submit" name="valider" value="Valider">
 				</form>

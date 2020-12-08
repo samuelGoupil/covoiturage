@@ -23,4 +23,12 @@ class Division{
 	public function setDiv_nom($id){
 	      $this->div_nom=$id;
 	  }
+
+		public function getDiv_num(){
+	  		return $this->div_num;
+		}
+
+		public function getDiv_nom(){
+	  		return $this->div_nom;
+		}
 }

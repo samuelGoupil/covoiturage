@@ -14,7 +14,7 @@ class DepartementManager{
 	public function getList(){
 		$listeDepartement=array();
 		$sql="Select dep_num, dep_nom, vil_num
-		from Departement order by dep_num";
+		from departement order by dep_num";
 		$req=$this->db->query($sql);
 		while ($departement=$req->fetch(PDO::FETCH_OBJ)){
 			$listeDepartement[]=new Departement ($departement);
