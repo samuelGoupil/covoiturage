@@ -18,7 +18,7 @@ Actuellement <?php echo sizeof($listePersonne) ?> personnes sont enregistrées.
     foreach($listePersonne as $personne){
     ?>
         <tr>
-          <td> <?php echo $personne ->getPer_num();?></td>
+          <td id="per_num"> <?php echo $personne ->getPer_num();?></td>
           <td> <?php echo $personne ->getPer_nom();?></td>
           <td> <?php echo $personne ->getPer_prenom();?></td>
         </tr>
@@ -28,3 +28,5 @@ Actuellement <?php echo sizeof($listePersonne) ?> personnes sont enregistrées.
     ?>
   </table>
 </center>
+
+<?php $personneselected=$personnemanag ?>
