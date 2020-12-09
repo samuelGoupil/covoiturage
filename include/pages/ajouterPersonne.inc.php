@@ -47,12 +47,11 @@ empty($_POST['password'])){
 	$personnemanag= new PersonneManager($db);
 	$_SESSION["numpersonne"]=$personnemanag->AjouterPersonne($_POST['nom'], $_POST["prenom"], $_POST["tel"],
 	$_POST["email"], $_POST["login"], $_POST["password"] );
+}
 
-		if (!empty($_POST['role'])){
-			$role=$_POST['role'];
-			echo $role;
-
-			if($role=="etudiant"){?>
+	if(!empty($_POST['nom'])&&!empty($_POST['prenom'])&&!empty($_POST['tel'])
+	&&!empty($_POST['email'])&&!empty($_POST['login'])&&
+	!empty($_POST['password'])&&$_POST["role"]=="etudiant"){?>
 
 				<h2>Ajouter un étudiant</h2>
 
@@ -80,17 +79,18 @@ empty($_POST['password'])){
 					</select>
 					<input type="submit" name="valider" value="Valider">
 				</form>
+
 				<?php
-				if(!empty($_POST['annee'])&&!empty($_POST['departement'])){
-					echo "qqch";
-					$etudiantmanag= new EtudiantManager($db);
-					$result=$etudiantmanag->AjouterEtudiant($_POST['departement'],$_POST['annee']);
-					echo "L'étudiant a été ajouté.";
-				}
+			}
+			if(!empty($_POST['annee'])&&!empty($_POST['departement'])){
+				$etudiantmanag= new EtudiantManager($db);
+				$result=$etudiantmanag->AjouterEtudiant($_POST['departement'],$_POST['annee']);
 			}
 
 
-			if($role=="personnel"){
+			if(!empty($_POST['nom'])&&!empty($_POST['prenom'])&&!empty($_POST['tel'])
+			&&!empty($_POST['email'])&&!empty($_POST['login'])&&
+			!empty($_POST['password'])&&$_POST["role"]=="personnel"){
 				?>
 				<h2>Ajouter un salarié</h2>
 				<form  method="post">
@@ -109,12 +109,9 @@ empty($_POST['password'])){
 					<input type="submit" name="valider" value="Valider">
 				</form>
 				<?php
-
-				if(!empty($_POST['telprof'])&&!empty($_POST['fonction'])){
-					$salariemanag= new SalarieManager($db);
-					$result=$salariemanag->AjouterSalarie($_POST['telprof'], $_POST['fonction']);
-					echo "Le salarie a été ajouté.";
-				}
-			}
-		}
-	}?>
+	}
+	if(!empty($_POST['telprof'])&&!empty($_POST['fonction'])){
+		$salariemanag= new SalarieManager($db);
+		$result=$salariemanag->AjouterSalarie($_POST['telprof'], $_POST['fonction']);
+	}
+?>

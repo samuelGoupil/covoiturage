@@ -8,7 +8,6 @@ class EtudiantManager{
 		$per_num=$_SESSION["numpersonne"];
 		$req= "INSERT INTO Etudiant (per_num, dep_num, div_num)
 		VALUES ('$per_num', '$dep_num', '$div_num')";
-		echo $req;
 		$execetudiant=$this->db->prepare($req)->execute();
 		return $execetudiant;
 	}
