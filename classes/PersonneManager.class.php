@@ -27,4 +27,10 @@ class PersonneManager{
 		$req=$this->db->query($req);
 		return $req->fetch(PDO::FETCH_OBJ);
 	}
+
+	public function getPersonne($per_num){
+		$req="SELECT per_nom, per_prenom, per_tel, per_mail FROM personne WHERE per_num='$per_num'";
+		$req=$this->db->query($req);
+		return $req->fetch(PDO::FETCH_OBJ);
+	}
 }

@@ -25,7 +25,19 @@ class Etudiant{
 	public function setDep_num($id){
 	      $this->dep_num=$id;
 	  }
-	public function setDiv_nom($id){
+	public function setDiv_num($id){
 		    $this->div_num=$id;
+		}
+
+		public function getPer_num(){
+			return $this->per_num;
+		}
+
+		public function getDep_num(){
+			return $this->dep_num;
+		}
+
+		public function getDiv_num(){
+			return $this->div_num;
 		}
 }
