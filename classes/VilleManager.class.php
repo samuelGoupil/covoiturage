@@ -30,8 +30,8 @@ class VilleManager{
 		while($ville = $reqexec->fetch(PDO::FETCH_OBJ)){
 			$villeRetour = new Ville($ville);
 		}
-		$reqexec->closeCursor();
 		return $villeRetour;
+		$reqexec->closeCursor();
 
 	}
 	public function getVilleByNom($id){
@@ -40,8 +40,9 @@ class VilleManager{
 		while($ville = $reqexec->fetch(PDO::FETCH_OBJ)){
 			$villeRetour = new Ville($ville);
 		}
-		$reqexec->closeCursor();
 		return $villeRetour;
+		$reqexec->closeCursor();
 
 	}
+
 }

@@ -29,10 +29,13 @@ $personnemanag= new PersonneManager($db);
 
         if (!empty($_POST['login'])){
             $result=$personnemanag->verifpersonne($_POST["login"],$_POST["motPasse"]);
-            if(!empty($result)){
+                        if(!empty($result)){
                 $_SESSION["login"]=$_POST["login"];
                 $_SESSION["MotDePasse"]=$_POST["motPasse"];
-                $_SESSION["Num"]=$result->getPer_num(); ?>
+                foreach($result as $resultat){
+                    $_SESSION["num"]=$resultat->getPer_num();
+                }
+                ?>
                 <script type='text/javascript'>window.location.href='index.php'</script>
                 <?php
 

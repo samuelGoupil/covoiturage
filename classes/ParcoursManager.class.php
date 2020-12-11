@@ -32,8 +32,26 @@ class ParcoursManager{
 	}
 	public function getVilleCompatible($vil_num){
 		$req= "SELECT * FROM parcours WHERE vil_num1=$vil_num";
-		$execparcours =$this->db->prepare($req)->execute();
-		return $execparcours;
+		$reqexec= $this->db->query($req);
+		while($parcours= $reqexec->fetch(PDO::FETCH_OBJ)){
+			$listeParcours[]=new Parcours($parcours);
+		}
+		$reqexec->closeCursor();
+		return $listeParcours;
+	}
+	public function getAllParcours($vilnum){
+		$req = 'SELECT DISTINCT vil_num, vil_nom FROM ville WHERE vil_num IN (SELECT vil_num1 FROM PARCOURS WHERE vil_num2 = :vil_num1 ) OR 
+				vil_num IN (SELECT vil_num2 FROM parcours WHERE vil_num1= :vil_num1)';
+		$reqexe = $this->db->prepare($sql);
+		$reqexe-> bindValue(':vil_num1', $vilnum);
+		$reqexe->execute();
+
+		$ListeVilles = array();
+		while ($villes = $reqexe->fetch(PDO::FETCH_OBJ)){
+			$ListeVilles[]=new Ville($villes);
+		}
+		$requete->closeCursor();
+		return $ListeVilles;
 	}
 
 }
