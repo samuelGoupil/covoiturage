@@ -12,11 +12,13 @@ class ParcoursManager{
 	}
 	public function getListParcours(){
 		$req="SELECT * FROM PARCOURS";
-		$reqexec= $this->db->query($req);
-		while($parcours= $reqexec->fetch(PDO::FETCH_OBJ)){
+		$reqexe= $this->db->prepare($req);
+		$reqexe->execute();
+		$listeParcours=array();
+		while($parcours= $reqexe->fetch(PDO::FETCH_OBJ)){
 			$listeParcours[]=new Parcours($parcours);
 		}
-		$reqexec->closeCursor();
+		$reqexe->closeCursor();
 		return $listeParcours;
 
 	}
@@ -39,19 +41,42 @@ class ParcoursManager{
 		$reqexec->closeCursor();
 		return $listeParcours;
 	}
-	public function getAllParcours($vilnum){
-		$req = 'SELECT DISTINCT vil_num, vil_nom FROM ville WHERE vil_num IN (SELECT vil_num1 FROM PARCOURS WHERE vil_num2 = :vil_num1 ) OR 
-				vil_num IN (SELECT vil_num2 FROM parcours WHERE vil_num1= :vil_num1)';
-		$reqexe = $this->db->prepare($sql);
-		$reqexe-> bindValue(':vil_num1', $vilnum);
+	public function getAllVillesParcours(){
+		$req = 'SELECT DISTINCT vil_num, vil_nom FROM ville WHERE vil_num IN (SELECT vil_num1 FROM PARCOURS) OR 
+				vil_num IN (SELECT vil_num2 FROM parcours)';
+		$reqexe = $this->db->prepare($req);
+		/*$reqexe-> bindValue(':vil_num1', $vilnum);*/
 		$reqexe->execute();
 
 		$ListeVilles = array();
 		while ($villes = $reqexe->fetch(PDO::FETCH_OBJ)){
 			$ListeVilles[]=new Ville($villes);
 		}
-		$requete->closeCursor();
+		$reqexe->closeCursor();
 		return $ListeVilles;
+	}
+	public function getAllParcours($vilnum){
+		$req = "SELECT DISTINCT vil_num, vil_nom FROM ville WHERE vil_num IN (SELECT vil_num1 FROM PARCOURS WHERE vil_num2 ='$vilnum') OR 
+				vil_num IN (SELECT vil_num2 FROM parcours WHERE vil_num1='$vilnum')";
+		$reqexe = $this->db->prepare($req);
+		$reqexe->execute();
+
+		$ListeVilles = array();
+		while ($villes = $reqexe->fetch(PDO::FETCH_OBJ)){
+			var_dump($villes);
+			$ListeVilles[]=new Ville($villes);
+		}
+		$reqexe->closeCursor();
+		return $ListeVilles;
+	}
+	public function getNumVilles($vil_num1, $vil_num2){
+		$req= "SELECT * FROM parcours WHERE vil_num1='$vil_num1' AND vil_num2='$vil_num2'";
+		$req=$this->db->query($req);
+		while($parcours= $req->fetch(PDO::FETCH_OBJ)){
+			$listeParcours[]=new Parcours($parcours);
+		}
+		return $listeParcours;
+		$req->closeCursor();
 	}
 
 }

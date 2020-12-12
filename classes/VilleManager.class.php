@@ -25,7 +25,7 @@ class VilleManager{
 	}
 
 	public function getVilleByID($id){
-		$req="SELECT vil_nom FROM VILLE V WHERE V.vil_num=$id";
+		$req="SELECT * FROM VILLE V WHERE V.vil_num=$id";
 		$reqexec=$this->db->query($req);
 		while($ville = $reqexec->fetch(PDO::FETCH_OBJ)){
 			$villeRetour = new Ville($ville);
