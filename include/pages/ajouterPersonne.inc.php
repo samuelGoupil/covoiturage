@@ -1,6 +1,6 @@
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="../css/stylesheet.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/stylesheet.css" />
 </head>
 <?php
 $db= new Mypdo();
@@ -15,20 +15,20 @@ empty($_POST['password']))
 <form method="post">
 	<div id="right">
 		<label for="prenom">Prenom :</label>
-		<input type="text" id="prenom" name="prenom"><br>
+		<input id="inputperso"type="text" id="prenom" name="prenom"><br>
 		<label for="email">Email :</label>
-		<input type="email" id="email" name="email"><br>
+		<input id="inputperso" type="email" id="email" name="email"><br>
 		<label for="password">Mot de passe :</label>
-		<input type="password" id="password" name="password"><br>
+		<input id="inputperso"type="password" id="password" name="password"><br>
 	</div>
 
 	<div id="left">
 	<label for="nom">Nom :</label>
-	<input type="text" id="nom" name="nom"><br>
+	<input id="inputperso" type="text" id="nom" name="nom"><br>
 	<label for="tel">Téléphone :</label>
-	<input type="tel" id="tel" name="tel"><br>
+	<input id="inputperso" type="tel" id="tel" name="tel"><br>
 	<label for="login">Login :</label>
-	<input type="text" id="logoin" name="login"><br><br>
+	<input id="inputperso" type="text" id="logoin" name="login"><br><br>
 	</div>
 
 	<div id="center">
@@ -37,10 +37,9 @@ empty($_POST['password']))
 		<label for="Etudiant">Etudiant</label>
 		<input type="radio" name="role" value="personnel">
 		<label for="Personnel">Personnel</label><br><br>
-		<input type="submit" name="Valider" value="Valider">
+		<input id="boutton" type="submit" name="Valider" value="Valider">
 	</div>
 </form>
-
 <?php
 }	
 

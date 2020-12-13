@@ -24,7 +24,7 @@ if (!empty ($_SESSION["login"])){ ?><h1>Proposer un trajet</h1>
           <option value="<?php echo $parcours->getVil_num() ?>"> <?php echo $parcours->getVil_nom(); ?>  </option>
     <?php } ?> 
       </select>
-      <input type="submit" id="valider" name="valider" value="valider">
+      <input type="submit" id="boutton" name="valider" value="valider">
     </form>
     <?php    
     }
@@ -36,11 +36,11 @@ if (!empty($_POST['Ville1'])){
     echo "Ville de depart : ".$nom_ville1; ?>
     <form action="##" id="SaisieTrajet" method="post">
       <label for="nom">Date de départ</label>
-      <input type="date" id="date" name="date" value=<span id="datetime"></span>
+      <input id="inputperso" type="date" id="date" name="date" value=<span id="datetime"></span>
       <label for="nbplace">Nombre de places</label>
-      <input type="text" id="nom" name="nbplace">
+      <input id="inputperso" type="text" id="nom" name="nbplace">
       <label for="nbplace">Heure de départ</label>
-      <input type="text" id="nom" name="heuredep" value="<?php echo $datefr.date(":i:s"); ?>">
+      <input id="inputperso" type="text" id="nom" name="heuredep" value="<?php echo $datefr.date(":i:s"); ?>">
       <label>Ville arrivée:</label>
       <select name="num_ville2">
     <?php 
@@ -51,7 +51,7 @@ if (!empty($_POST['Ville1'])){
       <?php
     } ?>
     </select>
-    <input type="submit" id="valider" name="valider" value="valider">
+    <input type="submit" id="boutton" name="valider" value="valider">
     </form>
   <?php
   }

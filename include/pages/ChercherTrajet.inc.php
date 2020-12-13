@@ -1,4 +1,8 @@
 
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="../css/stylesheet.css" />
+</head>
 <?php if (!empty ($_SESSION["login"])){ ?> <h1>Rechercher un trajet</h1>
 <?php
 $db= new Mypdo();

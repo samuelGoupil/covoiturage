@@ -42,7 +42,6 @@ body{
 	margin:auto;
 	display:table
 }
-
 #connect{
 	height:30px;
 	width:380px;
@@ -57,6 +56,17 @@ body{
 	color:#222222;
 	font-size:18px;
 	text-align:center;
+}
+#inputperso{
+	border-radius:5px;
+	box-shadow: 0 0 3px #000000 inset;
+}
+#boutton{
+	background-color: #000000;
+	color: #ffffff;
+	border-radius: 5px;
+	height:25px;
+	width: 70px;
 }
 #connect a{
 	color:#222222;
@@ -176,5 +186,7 @@ td
   border: 1px solid black;
 }
 #right{
+
 	float: right;
+	margin-right: 200px;
 }
