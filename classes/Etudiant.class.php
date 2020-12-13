@@ -40,4 +40,5 @@ class Etudiant{
 		public function getDiv_num(){
 			return $this->div_num;
 		}
+
 }

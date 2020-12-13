@@ -35,8 +35,8 @@ class Departement{
 	public function getDep_nom(){
   		return $this->dep_nom;
 	}
-  public function getVil_nom(){
-      return $this->vil_nom;
+  public function getVil_num(){
+      return $this->vil_num;
   }
 
 }

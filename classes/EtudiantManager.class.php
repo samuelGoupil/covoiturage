@@ -11,6 +11,7 @@ class EtudiantManager{
 		$execetudiant=$this->db->prepare($req)->execute();
 		return $execetudiant;
 	}
+
 	public function getList(){
 		$listeEtudiant=array();
 		$sql="Select per_num, dep_num, div_num
@@ -21,6 +22,13 @@ class EtudiantManager{
 		}
 		return $listeEtudiant;
 		$req->closeCursor();
+	}
+
+	public function getEtudiant($per_num){
+		$req="SELECT per_num, dep_num, div_num FROM Etudiant WHERE per_num='$per_num'";
+		$req=$this->db->query($req);
+		$etudiant = $req->fetch(PDO::FETCH_ASSOC);
+ 		return new Etudiant($etudiant);
 	}
 
 }

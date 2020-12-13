@@ -22,4 +22,11 @@ class FonctionManager{
 		return $listeFonction;
 		$req->closeCursor();
 	}
+
+	public function getFonction($fon_num){
+		$req="SELECT fon_num, fon_libelle FROM Fonction WHERE fon_num='$fon_num'";
+		$req=$this->db->query($req);
+		$fonction = $req->fetch(PDO::FETCH_ASSOC);
+		return new Fonction($fonction);
+	}
 }

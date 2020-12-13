@@ -44,4 +44,11 @@ class VilleManager{
 		return $villeRetour;
 
 	}
+
+	public function getVille($vil_num){
+		$req="SELECT vil_num, vil_nom FROM Ville WHERE vil_num='$vil_num'";
+		$req=$this->db->query($req);
+		$ville = $req->fetch(PDO::FETCH_ASSOC);
+		return new Ville($ville);
+	}
 }

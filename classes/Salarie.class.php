@@ -25,8 +25,18 @@ class Salarie{
 	public function setSal_telprof($id){
 	      $this->sal_telprof=$id;
 	  }
-	public function setFon_nom($id){
+	public function setFon_num($id){
 		    $this->fon_num=$id;
 		}
+
+	public function getPer_num(){
+		return $this->per_num;
+	}
+	public function getSal_telprof(){
+		return $this->sal_telprof;
+	}
+	public function getFon_num(){
+		return $this->fon_num;
+	}
 
 }

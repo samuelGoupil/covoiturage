@@ -22,4 +22,11 @@ class DepartementManager{
 		return $listeDepartement;
 		$req->closeCursor();
 	}
+
+	public function getDepartement($dep_num){
+		$req="SELECT dep_num,dep_nom, vil_num FROM Departement WHERE dep_num='$dep_num'";
+		$req=$this->db->query($req);
+		$departement = $req->fetch(PDO::FETCH_ASSOC);
+		return new Departement($departement);
+	}
 }

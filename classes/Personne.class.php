@@ -5,7 +5,7 @@ class Personne{
 	private $per_nom;
 	private $per_prenom;
 	private $per_tel;
-	private $per_email;
+	private $per_mail;
 	private $per_login;
 	private $per_pwd;
 
@@ -45,8 +45,8 @@ class Personne{
 	      $this->per_tel=$id;
 	  }
 
-		public function setPer_email($id){
-	        $this->per_email=$id;
+		public function setPer_mail($id){
+	        $this->per_mail=$id;
 	    }
 
 	public function setPer_login($id){
@@ -76,8 +76,8 @@ class Personne{
 		return $this->per_tel;
 	}
 
-	public function getPer_email(){
-		return $this->per_email;
+	public function getPer_mail(){
+		return $this->per_mail;
 	}
 
 	public function getPer_login(){
