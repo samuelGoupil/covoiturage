@@ -49,9 +49,9 @@ if(!empty($_POST['nom'])&&!empty($_POST['prenom'])&&!empty($_POST['tel'])
 !empty($_POST['password']))
 {
 
-$personnemanag= new PersonneManager($db);
-$_SESSION["numpersonne"]=$personnemanag->AjouterPersonne($_POST['nom'], $_POST["prenom"], $_POST["tel"],
-$_POST["email"], $_POST["login"], $_POST["password"] );
+	$personnemanag= new PersonneManager($db);
+	$_SESSION["numpersonne"]=$personnemanag->AjouterPersonne($_POST['nom'], $_POST["prenom"], $_POST["tel"],
+	$_POST["email"], $_POST["login"], $_POST["password"] );
 }
 
 if(!empty($_POST['nom'])&&!empty($_POST['prenom'])&&!empty($_POST['tel'])
@@ -86,35 +86,35 @@ if(!empty($_POST['nom'])&&!empty($_POST['prenom'])&&!empty($_POST['tel'])
 
 	<?php
 }
-		if(!empty($_POST['annee'])&&!empty($_POST['departement'])){
-			$etudiantmanag= new EtudiantManager($db);
-			$result=$etudiantmanag->AjouterEtudiant($_POST['departement'],$_POST['annee']);
-		}
+if(!empty($_POST['annee'])&&!empty($_POST['departement'])){
+	$etudiantmanag= new EtudiantManager($db);
+	$result=$etudiantmanag->AjouterEtudiant($_POST['departement'],$_POST['annee']);
+}
 
 
-		if(!empty($_POST['nom'])&&!empty($_POST['prenom'])&&!empty($_POST['tel'])
-		&&!empty($_POST['email'])&&!empty($_POST['login'])&&
-		!empty($_POST['password'])&&$_POST["role"]=="personnel")
-		{
-			?>
-			<h2>Ajouter un salarié</h2>
-			<form  method="post">
-				<label for="telprof">Téléphone professionnel :</label>
-				<input type="tel" name="telprof" value="">
-				<label for="fonction">Fonction :</label>
-				<select  name="fonction" value="">
-					<?php
-					$fonmanag= new FonctionManager($db);
-					$listeFonction=$fonmanag->getList();
-					foreach($listeFonction as $fonction){
-						?>
-						<option value="<?php echo $fonction->getFon_num() ?>"><?php echo $fonction->getFon_libelle() ?></option>
-				<?php } ?>
-				</select>
-				<input type="submit" name="valider" value="Valider">
-			</form>
+if(!empty($_POST['nom'])&&!empty($_POST['prenom'])&&!empty($_POST['tel'])
+&&!empty($_POST['email'])&&!empty($_POST['login'])&&
+!empty($_POST['password'])&&$_POST["role"]=="personnel")
+{
+	?>
+	<h2>Ajouter un salarié</h2>
+	<form  method="post">
+		<label for="telprof">Téléphone professionnel :</label>
+		<input type="tel" name="telprof" value="">
+		<label for="fonction">Fonction :</label>
+		<select  name="fonction" value="">
 			<?php
-		}
+			$fonmanag= new FonctionManager($db);
+			$listeFonction=$fonmanag->getList();
+			foreach($listeFonction as $fonction){
+				?>
+				<option value="<?php echo $fonction->getFon_num() ?>"><?php echo $fonction->getFon_libelle() ?></option>
+		<?php } ?>
+		</select>
+		<input type="submit" name="valider" value="Valider">
+	</form>
+	<?php
+}
 if(!empty($_POST['telprof'])&&!empty($_POST['fonction'])){
 	$salariemanag= new SalarieManager($db);
 	$result=$salariemanag->AjouterSalarie($_POST['telprof'], $_POST['fonction']);

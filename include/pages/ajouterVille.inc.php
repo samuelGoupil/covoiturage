@@ -21,7 +21,7 @@ $personnemanag= new PersonneManager($db);
   $villemanag= new VilleManager($db);
   $result=$villemanag->AjouterVille($_POST['nom_ville']);
   if (!empty($result)){ ?>
-    <p><img src="../image/valid.png" class="imagMenu" alt="valid"/>Trajet</p>
+    <img src="image/valid.png" class="imagMenu" alt="valid"/>
     <?php echo "La ville ".$_POST['nom_ville']." a été ajoutée";
   }
 }?>

@@ -34,13 +34,13 @@ if (!empty($_POST['Ville1'])){
     $nomvillechoisie= $villemanag->getVilleByID($_SESSION["num_ville1"]);
     $nom_ville1=$nomvillechoisie->getVil_nom();
     echo "Ville de depart : ".$nom_ville1; ?>
-    <form action="##" id="SaisieTrajet" method="post">
+    <form action="#" id="SaisieTrajet" method="post">
       <label for="nom">Date de départ</label>
       <input id="inputperso" type="date" id="date" name="date" value=<span id="datetime"></span>
       <label for="nbplace">Nombre de places</label>
       <input id="inputperso" type="text" id="nom" name="nbplace">
       <label for="nbplace">Heure de départ</label>
-      <input id="inputperso" type="text" id="nom" name="heuredep" value="<?php echo $datefr.date(":i:s"); ?>">
+      <input id="inputperso" type="text" id="nom" name="heuredep" value="<?php echo $datefr.date(":i:s");?>">
       <label>Ville arrivée:</label>
       <select name="num_ville2">
     <?php 
@@ -73,11 +73,12 @@ if (!empty($_POST['Ville1'])){
         $trajet_sens=1;
         $ajoutPropose=$proposemanag->AjouterTrajet($_SESSION['num_parcours'], $_SESSION["num"], $_POST['date'], $_POST['heuredep'], $_POST['nbplace'],$trajet_sens);
     }
-    if(!empty($ajoutPropose)){
-      echo "Trajet ajouté";
-      unset($_SESSION["num_parcours"]); ?>
-      <script type='text/javascript'>window.location.href='index.php'</script>
-      <?php
-    } 
+
   }
+  if(!empty($ajoutPropose)){ ?>
+    <img src="image/valid.png" class="imagMenu" alt="valid"/> <?php echo "Trajet ajouté";
+    unset($_SESSION["num_parcours"]); ?>
+    <script type='text/javascript'>window.location.href='index.php'</script>
+    <?php
+  } 
 }?>

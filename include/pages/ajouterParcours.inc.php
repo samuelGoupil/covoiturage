@@ -35,11 +35,11 @@ if (empty($_POST['Ville1']) and empty($_POST["Ville2"]) and empty($_POST["km"]))
 if (!empty($_POST['Ville1']) and !empty($_POST["Ville2"]) and !empty($_POST["km"])){
   $parcoursmanag= new ParcoursManager($db);
   $result=$parcoursmanag->AjouterParcours($_POST["km"], $_POST["Ville1"], $_POST["Ville2"]);
-  if (!empty($result)){
-    echo"Parcours ajouté! ";
+  if (!empty($result)){ ?>
+    <img src="image/valid.png" class="imagMenu" alt="valid"/> <?php echo"Parcours ajouté! ";
   }
-  else{
-    echo "Parcours non ajouté";
+  else{ ?>
+    <img src="image/erreur.png" class="imagMenu" alt="valid"/><?php echo "Parcours non ajouté";
   }
 }
 ?>

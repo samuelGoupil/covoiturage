@@ -42,7 +42,7 @@ class ParcoursManager{
 		return $listeParcours;
 	}
 	public function getAllVillesParcours(){
-		$req = 'SELECT DISTINCT vil_num, vil_nom FROM ville WHERE vil_num IN (SELECT vil_num1 FROM PARCOURS) OR 
+		$req = 'SELECT DISTINCT vil_num, vil_nom FROM ville WHERE vil_num IN (SELECT vil_num1 FROM parcours) OR 
 				vil_num IN (SELECT vil_num2 FROM parcours)';
 		$reqexe = $this->db->prepare($req);
 		/*$reqexe-> bindValue(':vil_num1', $vilnum);*/
@@ -78,6 +78,25 @@ class ParcoursManager{
 		return $listeParcours;
 		$req->closeCursor();
 	}
-
+	public function getAllParcoursNum($par_num){
+		$req = "SELECT DISTINCT vil_num, vil_nom FROM ville WHERE vil_num IN (SELECT vil_num1 FROM PARCOURS WHERE par_num='$par_num') OR 
+				vil_num IN (SELECT vil_num2 FROM parcours WHERE par_num='$par_num')";
+		$req=$this->db->query($req);
+		while($villes= $req->fetch(PDO::FETCH_OBJ)){
+			$listeVilles[]=new Ville($villes);
+		}
+		return $listeVilles;
+		$req->closeCursor();
+	}
+	public function getAllParcoursNumero($par_num){
+		$req = "SELECT DISTINCT vil_num, vil_nom FROM ville WHERE vil_num IN (SELECT vil_num1 FROM PARCOURS WHERE par_num='$par_num') OR 
+				vil_num IN (SELECT vil_num2 FROM parcours WHERE par_num='$par_num')";
+		$req=$this->db->query($req);
+		while($parcours= $req->fetch(PDO::FETCH_OBJ)){
+			$listeParcours[]=new Parcours($villes);
+		}
+		return $listeParcours;
+		$req->closeCursor();
+	}
 }
 	
