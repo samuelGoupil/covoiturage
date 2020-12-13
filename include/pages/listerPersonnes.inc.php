@@ -1,4 +1,8 @@
 
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="../css/stylesheet.css" />
+</head>
 <?php
 $db= new Mypdo();
 $personnemanag= new PersonneManager($db);
@@ -19,30 +23,29 @@ if(empty($_GET["per_num"])){?>
   <h1>Liste des personnes enregistrées</h1>
 
   Actuellement <?php echo sizeof($listePersonne) ?> personnes sont enregistrées.
-    <table>
-      <tr>
-        <th>Numéro</th>
-        <th>Nom</th>
-        <th>Prenom</th>
-      </tr>
+  <table>
+    <tr>
+      <th>Numéro</th>
+      <th>Nom</th>
+      <th>Prenom</th>
+    </tr>
 
   <?php
-    foreach($listePersonne as $personne){
-    ?>
-        <tr>
-          <td>
-            <a href="index.php?page=2&per_num=<?php echo $personne->getPer_num() ?>">
-            <?php echo $personne->getPer_num(); ?>
-          </td>
-          <td> <?php echo $personne ->getPer_nom();?></td>
-          <td> <?php echo $personne ->getPer_prenom();?></td>
-        </tr>
-
+    foreach($listePersonne as $personne)
+    { ?>
+      <tr>
+        <td>
+          <a href="index.php?page=2&per_num=<?php echo $personne->getPer_num() ?>">
+          <?php echo $personne->getPer_num(); ?>
+        </td>
+        <td> <?php echo $personne ->getPer_nom();?></td>
+        <td> <?php echo $personne ->getPer_prenom();?></td>
+      </tr>
     <?php
     }
   }
     ?>
-  </table>
+</table>
 
 
 

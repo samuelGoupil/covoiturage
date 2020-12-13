@@ -13,8 +13,8 @@ Actuellement <?php echo sizeof($listeVille);
  ?> villes sont enregistrées.
 <table>
   <tr>
-    <th>Numero</th>
-    <th>Ville</th>
+    <th>Numéro</th>
+    <th>Nom</th>
   </tr>
 
 
@@ -22,12 +22,11 @@ Actuellement <?php echo sizeof($listeVille);
 
   foreach($listeVille as $ville){
   ?>
-      <tr>
-        <td> <?php echo $ville ->getVil_num();?></td>
-        <td> <?php echo $ville ->getVil_nom();?></td>
-      </tr>
-
+    <tr>
+      <td> <?php echo $ville ->getVil_num();?></td>
+      <td> <?php echo $ville ->getVil_nom();?></td>
+    </tr>
   <?php
   }
-  ?>
+?>
 </table>

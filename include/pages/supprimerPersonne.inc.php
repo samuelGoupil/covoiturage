@@ -1,3 +1,7 @@
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="../css/stylesheet.css" />
+</head>
 <h1>Selectionner la personne à supprimer</h1>
 
 <?php
@@ -17,11 +21,11 @@ $result=$db->prepare($req)->execute();
   $listePersonne=$personnemanag->getList();
   foreach($listePersonne as $personne){
   ?>
-      <tr>
-        <td> <?php echo $personne ->getPer_num();?></td>
-        <td> <?php echo $personne ->getPer_nom();?></td>
-        <td> <?php echo $personne ->getPer_prenom();?></td>
-      </tr>
+    <tr>
+      <td> <?php echo $personne ->getPer_num();?></td>
+      <td> <?php echo $personne ->getPer_nom();?></td>
+      <td> <?php echo $personne ->getPer_prenom();?></td>
+    </tr>
 
   <?php
   }

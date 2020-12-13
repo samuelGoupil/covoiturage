@@ -21,18 +21,17 @@ Actuellement <?php echo sizeof($listeParcours)+1; ?>  parcours sont enregistrés
   </tr>
 
 
-<?php
-  foreach($listeParcours as $parcours){
-      ?>
-      <tr>
-        <td> <?php echo $parcours ->getPar_num();?></td>
-        <td> <?php echo $parcoursvillemanag->getVilleByID($parcours->getVil_num1())->getVil_nom();?></td>
-        <td> <?php echo $parcoursvillemanag->getVilleByID($parcours->getVil_num2())->getVil_nom();?></td>
-        <td> <?php echo $parcours ->getPar_km();?></td>
-        </tr>
-        <?php
-      }
-         ?>
-     </table>
+  <?php
+  foreach($listeParcours as $parcours){ ?>
+    <tr>
+      <td> <?php echo $parcours ->getPar_num();?></td>
+      <td> <?php echo $parcoursvillemanag->getVilleByID($parcours->getVil_num1())->getVil_nom();?></td>
+      <td> <?php echo $parcoursvillemanag->getVilleByID($parcours->getVil_num2())->getVil_nom();?></td>
+      <td> <?php echo $parcours ->getPar_km();?></td>
+    </tr>
+  <?php
+  }
+  ?>
+</table>
 
          

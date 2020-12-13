@@ -17,12 +17,11 @@ $result=$db->prepare($req)->execute();
   $listePersonne=$personnemanag->getList();
   foreach($listePersonne as $personne){
   ?>
-      <tr>
-        <td> <?php echo $personne ->getPer_num();?></td>
-        <td> <?php echo $personne ->getPer_nom();?></td>
-        <td> <?php echo $personne ->getPer_prenom();?></td>
-      </tr>
-
+    <tr>
+      <td> <?php echo $personne ->getPer_num();?></td>
+      <td> <?php echo $personne ->getPer_nom();?></td>
+      <td> <?php echo $personne ->getPer_prenom();?></td>
+    </tr>
   <?php
   }
   ?>
