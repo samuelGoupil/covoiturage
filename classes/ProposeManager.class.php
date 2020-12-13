@@ -10,5 +10,15 @@ class ProposeManager{
 		$execparcours =$this->db->prepare($req)->execute();
 		return $execparcours;
 	}	
+	public function getListPropose(){
+		$req="SELECT * FROM PROPOSE";
+		$reqexec= $this->db->query($req);
+		while($propose= $reqexec->fetch(PDO::FETCH_OBJ)){
+			$listePropose[]=new Propose($propose);
+		}
+		$reqexec->closeCursor();
+		return $listePropose;
+
+	}
 
 }

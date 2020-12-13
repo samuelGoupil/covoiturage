@@ -25,7 +25,11 @@ class PersonneManager{
 	public function verifpersonne($login,$pwd){
 		$req="SELECT * FROM PERSONNE WHERE per_login='$login' AND per_pwd='$pwd'";
 		$req=$this->db->query($req);
-		return $req->fetch(PDO::FETCH_OBJ);
+		while ($personne=$req->fetch(PDO::FETCH_OBJ)){
+			$listePersonne[]=new Personne ($personne);
+		}
+		return $listePersonne;
+		$req->closeCursor();
 	}
 
 	public function getPersonne($per_num){

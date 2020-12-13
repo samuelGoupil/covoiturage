@@ -6,7 +6,7 @@ class Propose{
 	private $pro_date;
 	private $pro_time;
 	private $pro_place;
-	private $pro_sens
+	private $pro_sens;
 	
 	public function __construct($valeurs = array()){
 		if (!empty($valeurs))
