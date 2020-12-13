@@ -11,6 +11,11 @@ class PersonneManager{
 		$num=$this->db->lastInsertId();
 		return $num;
 	}
+	public function SupprimerPersonne($per_num){
+		$req= "DELETE FROM personne WHERE per_num='$per_num'";
+		$execpersonne =$this->db->prepare($req)->execute();
+	}
+
 	public function getList(){
 		$listePersonne=array();
 		$sql="Select per_num, per_nom, per_prenom
@@ -33,7 +38,7 @@ class PersonneManager{
 	}
 
 	public function getPersonne($per_num){
-		$req="SELECT per_num, per_nom, per_prenom, per_tel, per_mail FROM personne WHERE per_num='$per_num'";
+		$req="SELECT per_num, per_nom, per_prenom, per_tel, per_mail, per_login, per_pwd FROM personne WHERE per_num='$per_num'";
 		$req=$this->db->query($req);
 		$personne = $req->fetch(PDO::FETCH_ASSOC);
  		return new Personne($personne);

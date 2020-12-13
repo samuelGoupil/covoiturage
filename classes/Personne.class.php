@@ -22,7 +22,7 @@ class Personne{
 							case 'per_nom': $this->setPer_nom($valeur); break;
 							case 'per_prenom': $this->setPer_prenom($valeur); break;
 							case 'per_tel': $this->setPer_tel($valeur); break;
-							case 'per_email': $this->setPer_email($valeur); break;
+							case 'per_mail': $this->setPer_mail($valeur); break;
 							case 'per_login': $this->setPer_login($valeur); break;
 							case 'per_pwd': $this->setPer_pwd($valeur); break;
 					}

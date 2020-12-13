@@ -11,6 +11,11 @@ class SalarieManager{
 		$execsalarie=$this->db->prepare($req)->execute();
 		return $execsalarie;
 	}
+	public function SupprimerSalarie($per_num){
+		$req= "DELETE FROM SALARIE WHERE per_num='$per_num'" ;
+		$execsalarie=$this->db->prepare($req)->execute();
+	}
+
 	public function getList(){
 		$listeSalarie=array();
 		$sql="Select per_num, sal_telprof, fon_num

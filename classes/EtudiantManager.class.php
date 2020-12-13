@@ -12,6 +12,11 @@ class EtudiantManager{
 		return $execetudiant;
 	}
 
+	public function SupprimerEtudiant($per_num){
+		$req= "DELETE FROM Etudiant WHERE per_num='$per_num'";
+		$execetudiant=$this->db->prepare($req)->execute();
+	}
+
 	public function getList(){
 		$listeEtudiant=array();
 		$sql="Select per_num, dep_num, div_num
