@@ -11,7 +11,6 @@ $listeVille=$villemanag->getList();
 ?>
 Actuellement <?php echo sizeof($listeVille);
  ?> villes sont enregistrées.
-<center>
 <table>
   <tr>
     <th>Numero</th>
@@ -24,12 +23,11 @@ Actuellement <?php echo sizeof($listeVille);
   foreach($listeVille as $ville){
   ?>
       <tr>
-        <td> <?php echo $ville ->getVil_nom();?></td>
         <td> <?php echo $ville ->getVil_num();?></td>
+        <td> <?php echo $ville ->getVil_nom();?></td>
       </tr>
 
   <?php
   }
   ?>
 </table>
-</center>

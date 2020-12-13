@@ -19,12 +19,11 @@ if(empty($_GET["per_num"])){?>
   <h1>Liste des personnes enregistrées</h1>
 
   Actuellement <?php echo sizeof($listePersonne) ?> personnes sont enregistrées.
-  <center>
     <table>
       <tr>
-        <th>Numero</th>
-        <th>nom</th>
-        <th>prenom</th>
+        <th>Numéro</th>
+        <th>Nom</th>
+        <th>Prenom</th>
       </tr>
 
   <?php
@@ -44,7 +43,6 @@ if(empty($_GET["per_num"])){?>
   }
     ?>
   </table>
-</center>
 
 
 
